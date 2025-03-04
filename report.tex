@@ -1,0 +1,100 @@
+\documentclass[10pt, conference]{IEEEtran}
+\usepackage{graphicx}  % For including images
+\usepackage{amsmath}   % For mathematical symbols
+\usepackage{amssymb}   % More math symbols
+\usepackage{cite}      % For citations
+\usepackage{hyperref}  % For hyperlinks
+\usepackage{booktabs}  % For better tables
+\usepackage{titlesec} 
+\usepackage{float} % For better section formatting
+
+\title{Report on Lab Work 1}
+\author{Do Duy Minh \\ ICT Department - USTH \\ \texttt{doduyminh2k4@email.com}}
+\date{}
+
+\begin{document}
+	\maketitle
+	
+	\begin{abstract}
+		This paper explores the application of machine learning in medical diagnosis, focusing on the classification of ECG heartbeat signals using traditional machine learning model.
+	\end{abstract}
+	
+	% Section formatting (keeps numbering, aligned to the left)
+	\titleformat{\section}
+	{\large\bfseries\raggedright}  % Bold, left-aligned
+	{\thesection}  % Section numbering
+	{0.5em}  % Space between number and title
+	{}  % No extra text before title
+	
+	% Subsection formatting (Indented with spacing, no numbering)
+	\renewcommand{\thesubsection}{\Alph{subsection}} % Convert subsection numbers to letters
+	\titleformat{\subsection}
+	{\normalsize\bfseries\raggedright}  % Bold, left-aligned
+	{\thesubsection}  % Use letter instead of number
+	{0.5em}  % Space between letter and title
+	{}  % No extra text before title
+	
+	% Subsubsection formatting (Labeled as A.1, A.2, B.1...)
+	\renewcommand{\thesubsubsection}{\Alph{subsection}.\arabic{subsubsection}} % Format as A.1, A.2...
+	\titleformat{\subsubsection}
+	{\normalsize\bfseries\raggedright}  % Bold, left-aligned
+	{\thesubsubsection}  % Use letter + number format
+	{1em}  % Space between label and title
+	{}  % No extra text before title
+	
+	
+	\section{Introduction}
+	In this paper, I introduce my work on the ECG Heartbeat dataset and compare my results with those presented in the original study \cite{example1}. The study applies a CNN model to classify different types of ECG signals.
+	
+	\section{Datasets}
+	In this section, I provide details about the dataset used in my research. The dataset was obtained from the Kaggle platform \cite{example2}. It consists of two subsets: the Arrhythmia Dataset and the PTB Diagnostic ECG Datasets. The datasets mined have been preprocessed.
+	
+	\par All of sub two datasets have been recorded from 47
+	different subjects recorded at the sampling rate of 125Hz.
+	Each beat is annotated by at least two cardiologists. With Arrhythmia, there have 5 categories divided into: N, S, V, F, Q.
+	With PTB Diagnostic ECG, the data have been divided into 2 type: normal and abnormal.
+	
+	\section{Methodology}
+	This section describes the methodology used in our study, including data preprocessing, model architecture, and training procedures. However, I only work with Arrhythmia Datasets.
+	
+\par To overcome this imbalance in the datasets, i decided to use Synthetic Minority Over-sampling technique, this technique generates synthetic samples for the minority class instead of simply duplicating existing ones. The random rate 42 are chosen to fix the data.
+	\par As the result, i get a new datasets with balanced in categories. All data in each categories are the same and equal to 90589. Each category take exact 20 percent of the whole datasets. Unlike the data in the paper \cite{example3}, their datasets are not balanced which lead to the poor performance of the CNNs Model they used for classify.
+	\par At the end, the datasets are split into 2 subset: the test set and the train set with the test set taking 20 percent of the datasets and 80 percent with the train set.
+	
+	\section{Experiments}
+	This section presents the results and analysis of the experiments conducted, including model performance and evaluation metrics.
+	\subsection{Model}
+	The model used in the experiment is Random Forest, a classical machine learning model. The primary reason for selecting Random Forest is its ability to handle high-dimensional and structured data effectively. In this study, the dataset consists of ECG (Electrocardiogram) signals.
+	
+	\par The model parameter including:(1) number of estimator equal to 100 and (2)the random state are 42.
+	
+	\subsection{Evaluation}
+	The evaluation metric used for the model are Accuracy, Precision, F1 and Recall. The model are trained on Google Colab.
+	
+	\par The result are outstanding, with the train accuracy equal 1.0 percent, each of categories classification are 1.0 in Precision, F1 and Recall.
+			\hline
+		\end{tabular}
+		\label{tab:ecg_categories}
+	\end{table}
+	
+	
+	\section{Conclusion}
+	The model of this paper are beaten the CNN model on paper \cite{example3} with extremely high accuracy, it show that the CNNs model might not work well on signal datatype.
+	
+	% Bibliography Section
+	\begin{thebibliography}{99}
+		
+		\bibitem{example1}
+		J. Doe, “An Example Paper,” *IEEE Transactions on Something*, vol. 10, no. 3, pp. 123–130, 2022.
+		
+		\bibitem{example2}
+		A. Smith and B. Brown, “Deep Learning for ECG Classification,” in *Proc. IEEE Conf. on Machine Learning*, 2021, pp. 45–50.
+		
+		\bibitem{example3}
+		\emph{\href{https://arxiv.org/abs/2401.12345}{ECG Heartbeat Classification: A Deep Transferable Representation}}
+		
+	\end{thebibliography}
+	
+\end{document}
+
+
